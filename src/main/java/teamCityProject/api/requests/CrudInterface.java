@@ -1,7 +1,5 @@
 package teamCityProject.api.requests;
 
-import teamCityProject.api.models.NewProjectDescription;
-
 public interface CrudInterface {
 
     public Object create(Object obj);

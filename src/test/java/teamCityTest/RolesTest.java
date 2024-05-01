@@ -11,7 +11,6 @@ import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 import teamCityProject.api.spec.Specifications;
 
-
 import static teamCityProject.api.generators.TestDataGenerator.generateRoles;
 
 public class RolesTest extends BaseApiTest {
@@ -85,6 +84,6 @@ public class RolesTest extends BaseApiTest {
 
         new UncheckedBuildConfig(Specifications.getSpec().authSpec(secondTestData.getUser()))
                 .create(firstTestData.getBuildType())
-                .then().assertThat().statusCode(HttpStatus.SC_BAD_REQUEST);
+                .then().assertThat().statusCode(HttpStatus.SC_FORBIDDEN);
     }
 }
