@@ -6,6 +6,9 @@ import teamCityProject.api.requests.unchecked.UncheckedBuildConfig;
 import teamCityProject.api.requests.unchecked.UncheckedProject;
 import teamCityProject.api.requests.unchecked.UncheckedUser;
 
+/**
+ * This class for managing classes and method related to negative scenarios.
+ */
 @Getter
 public class UncheckedRequests {
 

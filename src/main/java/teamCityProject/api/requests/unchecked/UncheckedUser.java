@@ -7,13 +7,15 @@ import teamCityProject.api.requests.Request;
 
 import static io.restassured.RestAssured.given;
 
+/**
+ * This class for interaction with User endpoint - negative scenarios.
+ */
 public class UncheckedUser extends Request implements CrudInterface {
     private static final String USER_ENDPOINT = "/app/rest/users";
 
     public UncheckedUser(RequestSpecification spec) {
         super(spec);
     }
-
 
     @Override
     public Response create(Object obj) {

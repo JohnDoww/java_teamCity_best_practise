@@ -7,6 +7,9 @@ import teamCityProject.api.requests.CrudInterface;
 import teamCityProject.api.requests.Request;
 import teamCityProject.api.requests.unchecked.UncheckedBuildConfig;
 
+/**
+ * This class for interaction with Build Configuration endpoint - positive scenarios.
+ */
 public class CheckedBuildConfig extends Request implements CrudInterface {
     public CheckedBuildConfig(RequestSpecification spec) {
         super(spec);
@@ -31,7 +34,8 @@ public class CheckedBuildConfig extends Request implements CrudInterface {
 
     @Override
     public String delete(String id) {
-        return new UncheckedBuildConfig(spec).delete(id)
+        return new UncheckedBuildConfig(spec)
+                .delete(id)
                 .then().assertThat().statusCode(HttpStatus.SC_OK)
                 .extract().asString();
     }

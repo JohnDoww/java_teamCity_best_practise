@@ -2,12 +2,11 @@ package teamCityTest;
 
 import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 
-import java.lang.ref.SoftReference;
-
+/**
+ * There is we store actions which we will while running tests
+ */
 public class BaseTest {
     protected SoftAssertions softAssert;
 

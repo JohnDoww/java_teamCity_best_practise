@@ -8,6 +8,10 @@ import io.restassured.specification.RequestSpecification;
 import teamCityProject.api.config.Config;
 import teamCityProject.api.models.User;
 
+/**
+ * There we store several types of user.
+ * While testing we specify which one we will use by calling the spec method
+ */
 public class Specifications {
     private static Specifications spec;
 
@@ -45,7 +49,7 @@ public class Specifications {
         return requestBuilder.build();
     }
 
-    public RequestSpecification suerUserSpec() {
+    public RequestSpecification superUserSpec() {
         var requestBuilder = reqBuilder();
         requestBuilder.setBaseUri("http://:"+ Config.getProperty("superUserToken") + "@" + Config.getProperty("host"));
         return requestBuilder.build();

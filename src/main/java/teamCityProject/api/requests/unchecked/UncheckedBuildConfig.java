@@ -7,6 +7,9 @@ import teamCityProject.api.requests.Request;
 
 import static io.restassured.RestAssured.given;
 
+/**
+ * This class for interaction with Build Configuration endpoint - negative scenarios.
+ */
 public class UncheckedBuildConfig extends Request implements CrudInterface {
     private static final String BUILD_CONFIG_ENDPOINT = "/app/rest/buildTypes";
 

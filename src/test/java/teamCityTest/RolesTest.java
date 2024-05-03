@@ -13,6 +13,9 @@ import teamCityProject.api.spec.Specifications;
 
 import static teamCityProject.api.generators.TestDataGenerator.generateRoles;
 
+/**
+ * User Roles tests
+ */
 public class RolesTest extends BaseApiTest {
 
     @Test
@@ -42,6 +45,7 @@ public class RolesTest extends BaseApiTest {
         var project = new CheckedProject(Specifications.getSpec()
                 .authSpec(testData.getUser()))
                 .create(testData.getProject());
+
         softAssert.assertThat(project.getId()).isEqualTo(testData.getProject().getId());
     }
 

@@ -1,10 +1,13 @@
 package teamCityTest;
 
 import org.testng.annotations.Test;
-import teamCityProject.api.generators.TestDataStorage;
 import teamCityProject.api.requests.checked.CheckedProject;
 import teamCityProject.api.requests.checked.CheckedUser;
 import teamCityProject.api.spec.Specifications;
+
+/**
+ * Build config tests
+ */
 
 public class BuildConfigurationTest extends BaseApiTest {
 
@@ -12,7 +15,7 @@ public class BuildConfigurationTest extends BaseApiTest {
     public void buildConfigurationTest(){
         var testData = testDataStorage.addTestData();
 
-        new CheckedUser(Specifications.getSpec().suerUserSpec()).create(testData.getUser());
+        new CheckedUser(Specifications.getSpec().superUserSpec()).create(testData.getUser());
 
         var project = new CheckedProject(Specifications.getSpec()
                 .authSpec(testData.getUser()))

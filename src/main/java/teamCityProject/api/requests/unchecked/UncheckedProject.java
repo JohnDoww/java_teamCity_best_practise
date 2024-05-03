@@ -7,15 +7,17 @@ import teamCityProject.api.requests.Request;
 
 import static io.restassured.RestAssured.given;
 
+/**
+ * This class for interaction with Project endpoint - negative scenarios.
+ */
 public class UncheckedProject extends Request implements CrudInterface {
-
-
-
     private static final String PROJECT_ENDPOINT = "/app/rest/projects";
 
     public UncheckedProject(RequestSpecification spec) {
         super(spec);
     }
+
+
 
     @Override
     public Response create(Object obj) {

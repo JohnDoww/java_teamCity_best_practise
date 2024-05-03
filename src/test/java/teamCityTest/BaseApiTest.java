@@ -8,11 +8,14 @@ import teamCityProject.api.requests.UncheckedRequests;
 import teamCityProject.api.spec.Specifications;
 
 
+/**
+ * There is we initialize creating a test data before each test and deleting the data after each test
+ */
 public class BaseApiTest extends BaseTest{
 
     public TestDataStorage testDataStorage;
-    public CheckedRequests checkedWithSuperUser = new CheckedRequests(Specifications.getSpec().suerUserSpec());
-    public UncheckedRequests uncheckedWithSuperUser= new UncheckedRequests(Specifications.getSpec().suerUserSpec());
+    public CheckedRequests checkedWithSuperUser = new CheckedRequests(Specifications.getSpec().superUserSpec());
+    public UncheckedRequests uncheckedWithSuperUser= new UncheckedRequests(Specifications.getSpec().superUserSpec());
 
     @BeforeMethod
     public void setupTest() {

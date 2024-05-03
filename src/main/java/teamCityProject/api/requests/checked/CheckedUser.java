@@ -7,6 +7,10 @@ import teamCityProject.api.requests.CrudInterface;
 import teamCityProject.api.requests.Request;
 import teamCityProject.api.requests.unchecked.UncheckedUser;
 
+
+/**
+ * This class for interaction with User endpoint - positive scenarios.
+ */
 public class CheckedUser extends Request implements CrudInterface {
 
 

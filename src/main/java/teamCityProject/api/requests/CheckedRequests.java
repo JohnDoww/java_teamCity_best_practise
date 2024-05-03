@@ -6,6 +6,9 @@ import teamCityProject.api.requests.checked.CheckedBuildConfig;
 import teamCityProject.api.requests.checked.CheckedProject;
 import teamCityProject.api.requests.checked.CheckedUser;
 
+/**
+ * This class for managing classes and method related to positive scenarios.
+ */
 @Getter
 public class CheckedRequests {
 
