@@ -8,7 +8,6 @@ import teamCityProject.api.spec.Specifications;
 /**
  * Build config tests
  */
-
 public class BuildConfigurationTest extends BaseApiTest {
 
     @Test
