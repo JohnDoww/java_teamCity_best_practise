@@ -5,6 +5,7 @@ import lombok.Getter;
 import teamCityProject.api.requests.unchecked.UncheckedBuildConfig;
 import teamCityProject.api.requests.unchecked.UncheckedProject;
 import teamCityProject.api.requests.unchecked.UncheckedUser;
+import teamCityProject.api.requests.unchecked.UniversalUnchecked;
 
 /**
  * This class for managing classes and method related to negative scenarios.
@@ -16,7 +17,9 @@ public class UncheckedRequests {
     private UncheckedUser userRequest;
     private UncheckedProject projectRequest;
     private UncheckedBuildConfig buildConfigRequest;
-    public UncheckedRequests(RequestSpecification spec){
+    private UniversalUnchecked universalUnchecked;
+
+    public UncheckedRequests(RequestSpecification spec) {
         this.userRequest = new UncheckedUser(spec);
         this.projectRequest = new UncheckedProject(spec);
         this.buildConfigRequest = new UncheckedBuildConfig(spec);

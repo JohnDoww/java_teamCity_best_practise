@@ -2,6 +2,7 @@ package teamCityTest;
 
 import teamCityProject.api.enums.Role;
 import teamCityProject.api.generators.TestDataGenerator;
+import teamCityProject.api.models.BuildType;
 import teamCityProject.api.requests.UncheckedRequests;
 import teamCityProject.api.requests.checked.CheckedBuildConfig;
 import teamCityProject.api.requests.checked.CheckedProject;
@@ -9,6 +10,8 @@ import teamCityProject.api.requests.unchecked.UncheckedBuildConfig;
 import org.apache.http.HttpStatus;
 import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
+import teamCityProject.api.requests.unchecked.UncheckedProject;
+import teamCityProject.api.requests.unchecked.UniversalUnchecked;
 import teamCityProject.api.spec.Specifications;
 
 import static teamCityProject.api.generators.TestDataGenerator.generateRoles;
@@ -22,11 +25,11 @@ public class RolesTest extends BaseApiTest {
     public void unauthorizedUserShouldNotHaveRightToCreateProject() {
         var testData = testDataStorage.addTestData();
 
-        new UncheckedRequests(Specifications.getSpec().unauthSpec()).getProjectRequest()
+        new UniversalUnchecked(Specifications.getSpec().unauthSpec(), UncheckedProject.class, "Project")
                 .create(testData.getProject())
                 .then().assertThat().statusCode(HttpStatus.SC_UNAUTHORIZED);
 
-        uncheckedWithSuperUser.getProjectRequest()
+        new UniversalUnchecked(Specifications.getSpec().superUserSpec(), UncheckedProject.class, "Project")
                 .get(testData.getProject().getId())
                 .then().assertThat().statusCode(HttpStatus.SC_NOT_FOUND)
                 .body(Matchers.containsString("No project found by locator" +
@@ -72,6 +75,8 @@ public class RolesTest extends BaseApiTest {
         var firstTestData = testDataStorage.addTestData();
         var secondTestData = testDataStorage.addTestData();
 
+
+
         checkedWithSuperUser.getProjectRequest().create(firstTestData.getProject());
         checkedWithSuperUser.getProjectRequest().create(secondTestData.getProject());
 
@@ -86,8 +91,9 @@ public class RolesTest extends BaseApiTest {
         checkedWithSuperUser.getUserRequest()
                 .create(secondTestData.getUser());
 
-        new UncheckedBuildConfig(Specifications.getSpec().authSpec(secondTestData.getUser()))
+        new UniversalUnchecked(Specifications.getSpec().authSpec(secondTestData.getUser()), BuildType.class, "BuildType")
                 .create(firstTestData.getBuildType())
                 .then().assertThat().statusCode(HttpStatus.SC_FORBIDDEN);
+
     }
 }

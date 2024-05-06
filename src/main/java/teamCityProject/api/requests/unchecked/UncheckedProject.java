@@ -2,6 +2,7 @@ package teamCityProject.api.requests.unchecked;
 
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification ;
+import lombok.Getter;
 import teamCityProject.api.requests.CrudInterface;
 import teamCityProject.api.requests.Request;
 
@@ -10,6 +11,7 @@ import static io.restassured.RestAssured.given;
 /**
  * This class for interaction with Project endpoint - negative scenarios.
  */
+@Getter
 public class UncheckedProject extends Request implements CrudInterface {
     private static final String PROJECT_ENDPOINT = "/app/rest/projects";
 
