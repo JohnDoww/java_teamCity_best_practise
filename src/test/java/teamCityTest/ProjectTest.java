@@ -13,6 +13,7 @@ public class ProjectTest extends BaseApiTest {
 
         var createdProject = checkedWithSuperUser.getProjectRequest()
                 .create(testData.getProject());
+
         softAssert.assertThat(createdProject.getId()).isEqualTo(testData.getProject().getId());
     }
 

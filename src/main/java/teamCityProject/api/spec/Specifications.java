@@ -32,6 +32,7 @@ public class Specifications {
         requestBuilder.addFilter( new ResponseLoggingFilter());
         requestBuilder.setContentType(ContentType.JSON);
         requestBuilder.setAccept(ContentType.JSON);
+        requestBuilder.setRelaxedHTTPSValidation();
         return requestBuilder;
     }
 

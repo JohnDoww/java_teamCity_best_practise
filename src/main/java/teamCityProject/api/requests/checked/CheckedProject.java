@@ -18,21 +18,6 @@ public class CheckedProject extends Request implements CrudInterface {
         super(spec);
     }
 
-//    public <T> T universalMethodCreate (Class <?> clas ){
-//        if(clas.equals(NewProjectDescription.class)){
-//            return  new UncheckedProject(spec).create(clas)
-//                    .then().assertThat().statusCode(HttpStatus.SC_OK)
-//                    .extract().as((Class<T>) Project.class);
-//        } else if (clas == User.class) {
-//            return (T) new UncheckedUser(spec)
-//                    .create(clas)
-//                    .then().assertThat().statusCode(HttpStatus.SC_OK)
-//                    .extract().as(User.class);
-//        } else {
-//            System.out.println("doesn't work");
-//            return null;
-//        }
-//    }
 
     @Override
     public Project create(Object obj) {
