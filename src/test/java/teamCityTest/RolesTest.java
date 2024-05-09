@@ -3,10 +3,8 @@ package teamCityTest;
 import teamCityProject.api.enums.Role;
 import teamCityProject.api.generators.TestDataGenerator;
 import teamCityProject.api.models.BuildType;
-import teamCityProject.api.requests.UncheckedRequests;
 import teamCityProject.api.requests.checked.CheckedBuildConfig;
 import teamCityProject.api.requests.checked.CheckedProject;
-import teamCityProject.api.requests.unchecked.UncheckedBuildConfig;
 import org.apache.http.HttpStatus;
 import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
@@ -74,8 +72,6 @@ public class RolesTest extends BaseApiTest {
     public void projectAdminShouldNotHaveRightsToCreateBuildConfigToAnotherProject(){
         var firstTestData = testDataStorage.addTestData();
         var secondTestData = testDataStorage.addTestData();
-
-
 
         checkedWithSuperUser.getProjectRequest().create(firstTestData.getProject());
         checkedWithSuperUser.getProjectRequest().create(secondTestData.getProject());
