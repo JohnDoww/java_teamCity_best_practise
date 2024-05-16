@@ -1,4 +1,4 @@
-package teamCityTest;
+package teamCityApiTest;
 
 import teamCityProject.api.enums.Role;
 import teamCityProject.api.generators.TestDataGenerator;

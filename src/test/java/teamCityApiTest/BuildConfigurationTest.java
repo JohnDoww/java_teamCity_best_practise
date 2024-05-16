@@ -1,4 +1,4 @@
-package teamCityTest;
+package teamCityApiTest;
 
 import org.testng.annotations.Test;
 import teamCityProject.api.requests.checked.CheckedProject;

@@ -1,4 +1,4 @@
-package teamCityTest;
+package teamCityApiTest;
 
 import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.AfterMethod;

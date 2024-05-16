@@ -1,4 +1,4 @@
-package teamCityTest;
+package teamCityApiTest;
 
 import teamCityProject.api.models.Project;
 import org.apache.http.HttpStatus;

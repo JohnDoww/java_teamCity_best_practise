@@ -1,4 +1,4 @@
-package teamCityTest;
+package teamCityApiTest;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
