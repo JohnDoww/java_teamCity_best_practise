@@ -1,34 +1,32 @@
 package teamCityUiTest;
 
 import com.codeborne.selenide.Configuration;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxOptions;
+
+import com.codeborne.selenide.Selenide;
 import org.testng.annotations.BeforeSuite;
 import teamCityApiTest.BaseTest;
 import teamCityProject.api.config.Config;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import static com.codeborne.selenide.Configuration.browserCapabilities;
+import teamCityProject.api.models.User;
+import teamCityProject.api.requests.checked.CheckedUser;
+import teamCityProject.api.spec.Specifications;
+import teamCityProject.ui.BrowserSettings;
+import teamCityProject.ui.pages.LoginPage;
 
 public class BaseUiTest extends BaseTest {
     @BeforeSuite
     public void setupUiTests(){
-        Configuration.browser = "firefox";
+        BrowserSettings.setup(Config.getProperty("browser"));
         Configuration.baseUrl = "http://"+ Config.getProperty("host");
         Configuration.remote =Config.getProperty("remote");
 
         Configuration.reportsFolder = "target/surefire-reports";
         Configuration.downloadsFolder ="target/downloads";
+    }
 
-        Map<String, Boolean> options = new HashMap<>();
-        options.put("enableVNC", true);
-        options.put("enableLog", true);
+    public void loginAsUser(User user){
+        // generate test user
+        new CheckedUser(Specifications.getSpec().superUserSpec()).create(user);
 
-        FirefoxOptions capabilities = new FirefoxOptions();
-        browserCapabilities = capabilities;
-        browserCapabilities.setCapability("selenoid:options", options);
-
+        new LoginPage().open().login(user);
     }
 }

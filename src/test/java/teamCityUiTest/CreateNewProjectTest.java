@@ -1,32 +1,33 @@
 package teamCityUiTest;
 
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.selector.ByAttribute;
+import com.codeborne.selenide.Condition;
 import org.testng.annotations.Test;
-import teamCityProject.api.requests.checked.CheckedUser;
-import teamCityProject.api.spec.Specifications;
+import teamCityProject.ui.pages.ProjectPage;
+import teamCityProject.ui.pages.admin.CreateNewProject;
 
-import static com.codeborne.selenide.Selenide.element;
+import java.time.Duration;
+
+import static com.codeborne.selenide.Selenide.$;
 
 public class CreateNewProjectTest extends BaseUiTest{
     @Test
     public void  authorizeUserAbleToCreateNewProject(){
         //generate the test data
         var testData = testDataStorage.addTestData();
-        // generate test user
-        new CheckedUser(Specifications.getSpec().superUserSpec()).create(testData.getUser());
+        var url = "https://github.com/JohnDoww/java_teamCity_best_practise.git";
 
-        Selenide.open("/login.html");
+        loginAsUser(testData.getUser());
 
+        new CreateNewProject()
+                .open(testData.getProject().getParentProject().getLocator())
+                .createProjectByUrl(url)
+                .setupProject(testData.getProject().getName(),testData.getBuildType().getName());
 
-        var userNameInput = element(new ByAttribute("id", "username"));
-        var userPasswordInput = element(new ByAttribute("id", "password"));
-        var loginButton = element(new ByAttribute("type", "submit"));
-
-        userNameInput.sendKeys(testData.getUser().getUsername());
-        userPasswordInput.sendKeys(testData.getUser().getPassword());
-        loginButton.click();
-
+        new ProjectPage().open()
+                .getSubprojects()
+                .stream().reduce((first, second) -> second).get()
+                .getHeader().shouldHave(Condition.text(testData.getProject().getName()));
 
     }
+
 }
