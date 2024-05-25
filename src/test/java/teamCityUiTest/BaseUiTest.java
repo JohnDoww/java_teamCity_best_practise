@@ -17,10 +17,11 @@ public class BaseUiTest extends BaseTest {
     public void setupUiTests(){
         BrowserSettings.setup(Config.getProperty("browser"));
         Configuration.baseUrl = "http://"+ Config.getProperty("host");
-        Configuration.remote =Config.getProperty("remote");
+        Configuration.remote = Config.getProperty("remote");
 
         Configuration.reportsFolder = "target/surefire-reports";
         Configuration.downloadsFolder ="target/downloads";
+        Configuration.timeout = 10000;
     }
 
     public void loginAsUser(User user){
