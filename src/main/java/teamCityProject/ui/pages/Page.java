@@ -5,7 +5,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import teamCityProject.ui.Selectors;
 import teamCityProject.ui.elements.PageElement;
-import teamCityProject.ui.elements.ProjectElement;
+
 
 import java.time.Duration;
 import java.util.ArrayList;
